@@ -8,12 +8,13 @@ import sys
 class Tabuleiro:
     def __init__(self): # __init__ é um método especial em Python que é o "construtor" da classe em Python.
         self.tabuleiro = [["1", "2", "3"], # self é uma referência ao objeto atual. É usado para acessar variáveis ​​que pertencem à classe.
-                         ["4", "5", "6"],
-                         ["7", "8", "9"]]
+                          ["4", "5", "6"],
+                          ["7", "8", "9"]]
 
     def exibir_tabuleiro(self): # Método recebe o self como parâmetro para acessar o atributo tabuleiro da classe
         for row in self.tabuleiro:
             print("|".join(row))
+
 
 class Jogador:
     def fazer_jogada(self, tabuleiro):
@@ -34,26 +35,17 @@ class JogadorHumano(Jogador): # Herda da classe Jogador
                     # Divide por 3 para obter o cociente (a linha) e pega o resto da divisão por 3 para obter a coluna Ex.: 5 / 3 = 1 (Cociente) e 5 % 3 = 2 (Resto)
                     # Marca a posição com o caractere X, se a posição estiver vaga
                     tabuleiro[jogada // 3][jogada % 3] = "X"
-                    break
+                    break # Sai do loop
                 else:
                     print("Posição ocupada!")
-                    continue
+                    continue # Volta para o início do loop
             except ValueError:
                 print("Entrada inválida. Digite um número de 1 a 9.")
-
-
+                continue
 
 class IA(Jogador):
     def fazer_jogada(self, tabuleiro):
         # Lógica para a IA escolher a melhor jogada
-
-
-def jogada_ia():
-    print("Vez da IA jogar...")
-    # Implemente aqui a lógica Minimax com Alpha-Beta Pruning para determinar a melhor jogada da IA
-    # Depois, atualize o tabuleiro com a jogada escolhida pela IA e exiba o tabuleiro
-    exibir_tabuleiro()
-
 
 tabuleiroMain = Tabuleiro() # Cria um objeto da classe Tabuleiro
 tabuleiroMain.exibir_tabuleiro() # Chama o método exibir_tabuleiro do objeto tabuleiro
