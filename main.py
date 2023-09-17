@@ -31,7 +31,7 @@ class JogadorHumano(Jogador): # Herda da classe Jogador
                     print("Posição inválida!")
                     continue # Volta para o início do loop
                 # Verifica se a posição está vaga através da conversão do número para o caractere correspondente dentro do tabuleiro
-                if tabuleiro[jogada // 3][jogada % 3] == chr(jogada + 1):
+                if tabuleiro[jogada // 3][jogada % 3] == chr(jogada):
                     # Divide por 3 para obter o cociente (a linha) e pega o resto da divisão por 3 para obter a coluna Ex.: 5 / 3 = 1 (Cociente) e 5 % 3 = 2 (Resto)
                     # Marca a posição com o caractere X, se a posição estiver vaga
                     tabuleiro[jogada // 3][jogada % 3] = "X"
@@ -46,6 +46,5 @@ class JogadorHumano(Jogador): # Herda da classe Jogador
 class IA(Jogador):
     def fazer_jogada(self, tabuleiro):
         # Lógica para a IA escolher a melhor jogada
-
-tabuleiroMain = Tabuleiro() # Cria um objeto da classe Tabuleiro
-tabuleiroMain.exibir_tabuleiro() # Chama o método exibir_tabuleiro do objeto tabuleiro
+        melhor_jogada = self.minimax(tabuleiro, self, -float('inf'), float('inf'))
+        tabuleiro[melhor_jogada[0]][melhor_jogada[1]] = "O"  # Marca a melhor jogada com "O"
